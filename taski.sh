@@ -1,4 +1,6 @@
-#!/bin/bash/
+#!/bin/bash
+
+echo "Programma avviato"
 
 A1=$1
 
