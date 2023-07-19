@@ -2,11 +2,13 @@
 
 echo "Programma avviato"
 
-A1=$1
+Command=$1
+
+echo "Hai Scritto $Command"
 
 
-
-if [A1 = "new"]
-then
-    echo "function 1"
-fi
+{
+	python newtask.py
+}||{
+	echo "Location of newtask.py not found. -e Write the relocation here"
+}
