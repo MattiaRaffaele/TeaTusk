@@ -29,15 +29,15 @@ if [ "$command" = "add" ];
 then
 
   {
-    cd 'C:\Users\\Documents\Github\taski'
+    cd 'C:\Users\\Documents\Github\taski' 2>/dev/null
   }||{
-    echo "The file 'newtask.py' wich is used for creating new task can't be located \ Would you like to start troubleshoot(y/n)" 
+    echoError "The file 'newtask.py' wich is used for creating new task can't be located" 
   }
 
   {
-    python newtask.py
+    python newtask.py 2>/dev/null
   }||{
-    python3 newtask.py
+    python3 newtask.py 2>/dev/null
   }||{
     echoMessage "Looks like that Python is not installed in your machine, would you like to install it? (y/n)"
     read = userInput
