@@ -2,6 +2,7 @@
 
 import json
 
+print("Type the name of the task")
 userInput = input()
     
 
