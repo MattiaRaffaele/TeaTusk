@@ -40,14 +40,20 @@ then
   {
     cd 'C:\Users\\Documents\Github\taski' 2>/dev/null
   }||{
+
+    
     echoError "The file 'newtask.py' wich is used for creating new task can't be located" 
     echoMessage "Would you like to run the troubleshoot (y/n)"
 
 
-    read = userInput
+    read=userInput
     if [ $userInput = "y" ];
     then
-      LocateFolder()
+      LocateFolder
+
+    else
+      echo "I'm sorry maybe you could help me get better on Github"
+    fi
 
   }
 
@@ -57,7 +63,7 @@ then
     python3 newtask.py 2>/dev/null
   }||{
     echoMessage "Looks like that Python is not installed in your machine, would you like to install it? (y/n)"
-    read = userInput
+    read=userInput
     
 
     if [ $userInput = "y" ];
