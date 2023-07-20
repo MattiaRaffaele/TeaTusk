@@ -1,14 +1,9 @@
 #!/bin/bash
-
-echo "Programma avviato"
-
-Command=$1
-
-echo "Hai Scritto $Command"
-
-
-{
-	python newtask.py
-}||{
-	echo "Location of newtask.py not found. -e Write the relocation here"
-}
+echo "Enter password"
+read pass
+if [ $pass="password" ]
+then
+  echo "The password is correct."
+else
+  echo "The password is incorrect, try again."
+fi
