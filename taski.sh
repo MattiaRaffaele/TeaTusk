@@ -1,5 +1,14 @@
 #!/bin/bash
 
+
+function LocateFolder(){
+  echoMessage "Copy and paste in the terminal the location below"
+  whereis
+  read = newLocation
+}
+
+
+
 terminalColorClear='\033[0m'
 terminalColorEmphasis='\033[1;32m'
 terminalColorError='\033[1;31m'
@@ -32,6 +41,14 @@ then
     cd 'C:\Users\\Documents\Github\taski' 2>/dev/null
   }||{
     echoError "The file 'newtask.py' wich is used for creating new task can't be located" 
+    echoMessage "Would you like to run the troubleshoot (y/n)"
+
+
+    read = userInput
+    if [ $userInput = "y" ];
+    then
+      LocateFolder()
+
   }
 
   {
@@ -43,7 +60,7 @@ then
     read = userInput
     
 
-    if [ userInput = "y" ];
+    if [ $userInput = "y" ];
     then
 
       sudo apt update
