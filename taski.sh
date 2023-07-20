@@ -27,7 +27,7 @@ then
       sudo apt install python3
 
       echo "Python installed!"
-    fin
+    fi
 
   }
 
