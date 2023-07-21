@@ -1,21 +1,7 @@
 #!/bin/bash
 
 
-function LocateFolder(){
-  echoMessage "Copy and paste in the terminal the location below"
-  
-  read newLocation
 
-  {
-    cd "$newLocation" 2>/dev/null
-    
-  }||{
-    echoError "$newLocation is not a valid location"
-    exit
-  }
- 
-  echo "Now the problem is solved but be sure to locate the python file in the program's folder"
-}
 
 
 
@@ -46,26 +32,6 @@ command=$1
 
 if [ "$command" = "add" ];
 then
-
-  {
-    cd 'C:\Users\\Documents\Github\taski' 2>/dev/null
-  }||{
-
-    
-    echoError "The file 'newtask.py' wich is used for creating new task can't be located. Would you like to run the troubleshoot? (y/n)"
-
-
-    read userInput
-    if [ "$userInput" = "y" ];
-    then
-      LocateFolder
-
-    else
-      echo "I'm sorry maybe you could help me get better on Github"
-      exit
-    fi
-
-  }
 
   {
     python newtask.py 2>/dev/null
