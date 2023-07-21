@@ -3,7 +3,7 @@
 
 function LocateFolder(){
   echoMessage "Copy and paste in the terminal the location below"
-  whereis
+  whereis newtask.py
   read = newLocation
 }
 
