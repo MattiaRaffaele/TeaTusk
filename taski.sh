@@ -44,11 +44,13 @@ then
     if [ "$userInput" = "y" ];
     then
 
-      sudo apt update
-      sudo apt install python3
+      {
+        sudo apt update 2>/dev/null && sudo apt install python3 2>/dev/null
 
-      echoMessage "Python installed!"
-
+        echoMessage "Python installed!"
+      }||{
+        echoError -e "Python must be installed manually"
+      }
 
     elif [ "$userInput" = "n" ];
     then
