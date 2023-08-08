@@ -49,7 +49,7 @@ then
 
         echoMessage "Python installed!"
       }||{
-        echoError -e "Python must be installed manually"
+        echoError "Python must be installed manually"
       }
 
     elif [ "$userInput" = "n" ];
@@ -61,5 +61,5 @@ then
    }
 
 else
-   echo "Command not recognized"
+   python main.py
 fi

@@ -1,0 +1,8 @@
+"Something wrong has happened."
+"\nPossible cases:"
+"\n>> case 1"
+"\n"
+">> 'data.json' could be corrupted"
+"\n>> 'data.json' could contain syntax errors, have you tried to open it?"
++ separator + Fore.RED +
+"\nDo not consider uninstalling because the task are saved locally and this would delete everything!")
