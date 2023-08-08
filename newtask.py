@@ -1,16 +1,29 @@
 import json
 from colorama import Fore
 
+def appendJson(task, description, priority):
+    with open('data.json', 'r') as f:
+        jsonFile = json.load(f)
+
+    jsonFile.append({
+        'task': task,
+        'description': description,
+        'priority': priority
+    })
+
+    with open("data.json", "w") as f:
+        json.dump(jsonFile, f, indent=4, separators=(',', ': '))
 
 def setTitle():
     print("Type the name of the task")
     userInput = input()
 
-    appendJson(task=userInput)
+    # TODO Fix problem with this and others calls
+    appendJson(task=userInput, description="", priority="")
 
 
 def setDescription():
-    print("Type the task description, press ENTER to skip")
+    print("Type the task description or press ENTER to skip")
     userInput = input()
 
     if userInput == "":
@@ -32,21 +45,6 @@ def setPriority():
         appendJson(priority=userInput)
 
 
-def appendJson(task, description, priority):
-    with open('data.json', 'r') as f:
-        jsonFile = json.load(f)
-
-    jsonFile.append({
-        'task': task,
-        'description': description,
-        'priority': priority
-    })
-
-    with open("data.json", "w") as f:
-        json.dump(jsonFile, f, indent=4, separators=(',', ': '))
-
-
 setTitle()
 setDescription()
 setPriority()
-exit(0)
