@@ -6,36 +6,35 @@ def setTitle():
     print("Type the name of the task")
     userInput = input()
 
-    with open('data.json', 'r') as f:
-        jsonFile = json.load(f)
-
-    jsonFile.append({
-        'title': userInput
-    })
-
-    with open("data.json", "w") as f:
-        json.dump(jsonFile, f, indent=4, separators=(',', ': '))
+    appendJson(task=userInput)
 
 
 def setPriority():
     print("Set Priority (type 0, 1, 2)")
     userInput = input()
 
-    if userInput != "0" or "1" or "2":
+    if userInput != "0" and userInput != "1" and userInput != "2":
+
         print(Fore.RED + "\nInsert a valid input >:(\n" + Fore.RESET)
         setPriority()
+
     else:
+        appendJson(priority=userInput)
 
-        with open('data.json', 'r') as f:
-            jsonFile = json.load(f)
 
-        jsonFile.append({
-            'priority': userInput
-        })
+def appendJson(task, priority):
+    with open('data.json', 'r') as f:
+        jsonFile = json.load(f)
 
-        with open("data.json", "w") as f:
-            json.dump(jsonFile, f, indent=4, separators=(',', ': '))
+    jsonFile.append({
+        'task': task,
+        'priority': priority
+    })
+
+    with open("data.json", "w") as f:
+        json.dump(jsonFile, f, indent=4, separators=(',', ': '))
 
 
 setTitle()
 setPriority()
+appendJson()
