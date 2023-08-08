@@ -9,6 +9,16 @@ def setTitle():
     appendJson(task=userInput)
 
 
+def setDescription():
+    print("Type the task description, press ENTER to skip")
+    userInput = input()
+
+    if userInput == "":
+        setPriority()
+    else:
+        appendJson(description=userInput)
+
+
 def setPriority():
     print("Set Priority (type 0, 1, 2)")
     userInput = input()
@@ -22,12 +32,13 @@ def setPriority():
         appendJson(priority=userInput)
 
 
-def appendJson(task, priority):
+def appendJson(task, description, priority):
     with open('data.json', 'r') as f:
         jsonFile = json.load(f)
 
     jsonFile.append({
         'task': task,
+        'description': description,
         'priority': priority
     })
 
@@ -36,5 +47,6 @@ def appendJson(task, priority):
 
 
 setTitle()
+setDescription()
 setPriority()
-appendJson()
+exit(0)
