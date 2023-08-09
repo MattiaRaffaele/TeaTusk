@@ -1,7 +1,7 @@
 import json
 from colorama import Fore
 
-def appendJson(task, description, priority):
+def appendJson(task= "task", description= "description", priority="priority"):
     with open('data.json', 'r') as f:
         jsonFile = json.load(f)
 
@@ -18,7 +18,6 @@ def setTitle():
     print("Type the name of the task")
     userInput = input()
 
-    # TODO Fix problem with this and others calls
     appendJson(task=userInput, description="", priority="")
 
 
