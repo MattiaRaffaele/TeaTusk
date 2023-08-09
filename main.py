@@ -14,6 +14,8 @@ def err():
           "\n>> 'data.json' could contain syntax errors, have you tried to open it?"
           + separator + Fore.RED +
           "\nDo not consider uninstalling because the task are saved locally and this would delete everything!")
+
+
 def jsonLoad():
     with open('data.json', 'r') as f:
         jsonFile = json.load(f)
@@ -29,9 +31,10 @@ def jsonLoad():
             print("Task:    Author:"
                   "\n"
                   + titleToPrint + "  " + authorToPrint)
+
+
 def stop():
     print(Fore.RESET)
-
 
 
 try:
