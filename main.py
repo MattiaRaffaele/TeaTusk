@@ -20,17 +20,17 @@ def jsonLoad():
     with open('data.json', 'r') as f:
         jsonFile = json.load(f)
 
+    for title in jsonFile:
+
         for title in jsonFile:
+            titleToPrint = title['title']
 
-            for title in jsonFile:
-                titleToPrint = title['title']
+        for description in jsonFile:
+            descriptionToPrint = description['description']
 
-            for author in jsonFile:
-                authorToPrint = author['author']
-
-            print("Task:    Author:"
-                  "\n"
-                  + titleToPrint + "  " + authorToPrint)
+        print("Task:    Author:"
+              "\n"
+              + titleToPrint + "  " + descriptionToPrint)
 
 
 def stop():

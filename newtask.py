@@ -1,49 +1,40 @@
+#Import libraries
 import json
+import pick
 from colorama import Fore
 
-def appendJson(task= "task", description= "description", priority="priority"):
-    with open('data.json', 'r') as f:
-        jsonFile = json.load(f)
-
-    jsonFile.append({
-        'task': task,
-        'description': description,
-        'priority': priority
-    })
-
-    with open("data.json", "w") as f:
-        json.dump(jsonFile, f, indent=4, separators=(',', ': '))
-
+#functions
 def setTitle():
-    print("Type the name of the task")
-    userInput = input()
+    print ("Insert Title (max. 12)")
+    titleInput = input()
 
-    appendJson(task=userInput, description="", priority="")
-
+    #Checks the length of the input
+    if len(titleInput) < 12:
+        return titleInput
+    else:
+        print (Fore.RED + '\n---The title must have a maximum of 12 letters---\n' + Fore.RESET)
+        setTitle()
 
 def setDescription():
-    print("Type the task description or press ENTER to skip")
-    userInput = input()
+    print ("Description")
+    descriptionInput = input()
 
-    if userInput == "":
-        setPriority()
-    else:
-        appendJson(description=userInput)
+    return descriptionInput
 
+def _menu_():
 
-def setPriority():
-    print("Set Priority (type 0, 1, 2)")
-    userInput = input()
+    # Menu GUI
+    options = ['Title', 'Description', 'Priority', 'Exit']
+    pickle = pick.pick(options, "TeaTusk Menu", indicator='>>', default_index=0)
 
-    if userInput != "0" and userInput != "1" and userInput != "2":
+    # Menu backend
+    if 'Title' in pickle:
+        setTitle()
 
-        print(Fore.RED + "\nInsert a valid input >:(\n" + Fore.RESET)
-        setPriority()
+    elif 'Description' in pickle:
+        setDescription()
 
-    else:
-        appendJson(priority=userInput)
+    elif 'Priority' in pickle:
+        print (Fore.BLUE + "\n!!!Coming Soon!!!\n" + Fore.RESET)
 
-
-setTitle()
-setDescription()
-setPriority()
+_menu_()
