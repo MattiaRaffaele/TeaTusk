@@ -1,13 +1,13 @@
 #Import libraries
 import json
-import pick
+import questionary
 from colorama import Fore
 
 #functions
 def setTitle():
     print ("Insert Title (max. 12)")
-    titleInput = input()
-
+    titleInput = input(Fore.CYAN)
+ 
     #Checks the length of the input
     if len(titleInput) < 12:
         return titleInput
@@ -24,17 +24,30 @@ def setDescription():
 def _menu_():
 
     # Menu GUI
-    options = ['Title', 'Description', 'Priority', 'Exit']
-    pickle = pick.pick(options, "TeaTusk Menu", indicator='>>', default_index=0)
+    print ("\nThose prompts were made able by the python library 'questionary' wich I highly reccomend\n")
+    questionaryOutput = questionary.select(
+        "TeaTusk menu",
+        choices = [
+            "Title",
+            "Description",
+            "Priority",
+            "Exit"
+            ]).ask()
 
-    # Menu backend
-    if 'Title' in pickle:
+
+    #Menu backend
+    if questionaryOutput == "Title":
         setTitle()
 
-    elif 'Description' in pickle:
+    elif questionaryOutput == "Description":
         setDescription()
 
-    elif 'Priority' in pickle:
-        print (Fore.BLUE + "\n!!!Coming Soon!!!\n" + Fore.RESET)
+    elif questionaryOutput == "Priority":
+        print (Fore.LIGHTCYAN_EX + "\n---COMING SOON---\n" + Fore.RESET)
+        _menu_()
+
+    elif questionaryOutput == "Exit":
+        questionary.confirm("Are you sure?").ask()
+
 
 _menu_()
